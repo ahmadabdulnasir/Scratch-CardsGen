@@ -11,7 +11,8 @@ from datetime import datetime
 from sys import exit
 #from math import pi
 from random import randint as ran
-
+from random import choices
+from string import ascii_letters as letters
 def genpin():
     '''
     Generate Random alphanumeric Pin
@@ -26,13 +27,10 @@ def genserial():
     Generate a numeric Serial numbers
     '''
     dserial = ''
-    now = datetime.now()
-    dserial += str(now.day)
-    dserial += str(now.year)
-    dserial += str(now.month)
-    dserial += str(now.second)
-    serial = int(dserial[::-1])+ran(1995,2018)
-    return str(serial)
+    spam = str(uuid.uuid4().int>>64)
+    serial = spam[:8]
+    ending = ''.join(choices(letters,k=2))
+    return str(serial)+ending
 def gencard():
     '''
     Generate the card
@@ -66,10 +64,6 @@ head = '''
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title></title>
-	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
-	<meta name="created" content="Ahmad Abdulnasir (salafi)"/>
-	<meta name="changedby" content="Ahmad Abdulnasir"/>
-	<meta name="changed" content=" "/>
 	<style type="text/css">
 		@page { size: 21cm 29.7cm }
 	</style>
@@ -79,7 +73,6 @@ head = '''
 tail= ''' </body>
 </html>
        '''
-
 
 
 if __name__ == "__main__":
