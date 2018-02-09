@@ -1,7 +1,7 @@
 import sqlite3
 
 
-con = sqlite3.connect('mandbcenterS.db') 
+con = sqlite3.connect('mandbcenter.db') 
 db = con.cursor() 
 sqlcmdint = '''CREATE TABLE IF NOT EXISTS `cards` (
 	`sn`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -12,6 +12,8 @@ sqlcmdint = '''CREATE TABLE IF NOT EXISTS `cards` (
 ) '''
 db.execute(sqlcmdint)
 j = db.execute('SELECT * FROM cards').fetchall()
+con.commit()
 db.close()
+con.close()
 #commit
 print(j)

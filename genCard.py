@@ -26,7 +26,6 @@ def genserial():
     '''
     Generate a numeric Serial numbers
     '''
-    dserial = ''
     spam = str(uuid.uuid4().int>>64)
     serial = spam[:8]
     ending = ''.join(choices(letters,k=2))
@@ -35,7 +34,7 @@ def gencard():
     '''
     Generate the card
     '''
-    print("Welcome to Scrath Card Generator \n\t DaboLinux(c)2017\n\t Contact: www.dabolinux.com dabolinux@gmail.com")
+    print("Welcome to Scrath Card Generator \n\t DaboLinux(c)2017\n\t Contact: www.dabolinux.com")
     try:
         amt = int(input("\n\tHow Many cards do you wants to generate?\n\t : "))
     except ValueError:
@@ -73,6 +72,7 @@ head = '''
 tail= ''' </body>
 </html>
        '''
+
 
 
 if __name__ == "__main__":
